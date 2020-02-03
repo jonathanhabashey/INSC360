@@ -5,7 +5,7 @@
 
 string_1 = "This is a test string."
 string_2 = "This is also a test string."
-string_3 = "Knock Knock!\nWho's there?\nOrange!\nOrange who?\nOrange you glad I didnt say \"banana!?\""
+string_3 = "Knock Knock!\nWho's there?\nOrange!\nOrange who?\nOrange you glad I didn't say \"banana!?\""
 number_string = "1234"
 
 print(string_1, string_2, string_3, number_string)
