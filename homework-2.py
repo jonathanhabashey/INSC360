@@ -10,11 +10,17 @@ number_string = "1234"
 
 print(string_1, string_2, string_3, number_string)
 
+print("\n")
+
 joined_string = string_1 + " " + string_2
 
 print(joined_string)
 
+print("\n")
+
 print(string_3.replace("\"banana!?\"", "\"grapes!?\"", 1))
+
+print("\n")
 
 new_numbers = int(number_string)
 
