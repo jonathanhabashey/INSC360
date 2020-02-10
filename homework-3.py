@@ -14,8 +14,14 @@ print(today_date)
 today_date_string = today_date
 print(today_date_string.strftime("%m-%d-%Y"))
 
+
+
 graduation = "May 15, 2020"
-datetime.strptime(graduation, '%B' + ' ' + '%d, ' + '%Y')
+graduation = datetime.strptime(graduation, '%B' + ' ' + '%d, ' + '%Y')
+
+print(graduation.day)
+print(graduation.month)
+print(graduation.year)
 
 
 
