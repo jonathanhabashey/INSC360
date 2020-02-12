@@ -24,4 +24,4 @@ print("\n")
 
 new_numbers = int(number_string)
 
-print(new_numbers)
+print(type(new_numbers))
