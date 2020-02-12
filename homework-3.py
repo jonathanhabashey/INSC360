@@ -12,7 +12,7 @@ today_date = date.today()
 print(today_date)
 
 today_date_string = today_date
-print(today_date_string.strftime("%m-%d-%Y"))
+print(today_date_string.strftime("%m/%d/%Y"))
 
 
 
