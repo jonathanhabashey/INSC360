@@ -12,7 +12,6 @@ for web in webFile:
 
     web = web.strip()
     r = requests.get(web)
-    # rcontent = ET.fromstring(r.content)
     logging.info("Now attempting to get data at: {}".format(web))
     print("Now attempting to get data at: {}".format(web))
     if r.status_code == 200:
