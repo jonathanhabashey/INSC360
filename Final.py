@@ -74,7 +74,7 @@ if user == "Bundesliga":
                 user = input("If you'd like to learn about another team, type in their name"
                           " if not, type exit: ")
         if teamFound == False:
-            user = input("That wasn't a name you could pick! Please try again: ")
+            user = input("That wasn't an option you could pick! Please try again: ")
 
 
 if user == "Premier League":
@@ -143,4 +143,4 @@ if user == "Premier League":
                 user = input("If you'd like to learn about another team, type in their name"
                              " if not, type exit: ")
         if teamFound == False:
-            user = input("That wasn't a name you could pick! Please try again: ")
+            user = input("That wasn't an option you could pick! Please try again: ")
