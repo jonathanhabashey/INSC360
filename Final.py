@@ -8,7 +8,7 @@ logging.basicConfig(
     format='%(asctime)s %(levelname)-8s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.INFO)
 
 user = input("Please select Premier League or Bundeliga: ")
-
+#Split the leagues so it only loaded the teams you needed
 if user == "Bundesliga":
     from sportsreference.fb.team import Team
 
@@ -36,16 +36,18 @@ if user == "Bundesliga":
                   Augsburg, Mainz, Dusseldorf, Bremen, Paderborn, HBerlin]
 
     for team in Bundesliga:
-
+#If the team has missing data, I remove it from my list and log it
         if team.position == None:
             Bundesliga.remove(team)
             logging.error("{}'s data could not be retrieved".format(team.name))
         else:
             logging.info("{}'s data was successfully retrieved".format(team.name))
+#Sorting the list with the teams that do not have missing data
     Bundesliga.sort(key=lambda team: team.position)
     print("Here are today's Bundesliga standings: ")
     print("{:<9} {:<20} {:<8} {:<8}".format("Position", "Name", "Points", "W-L-D"))
     plotList = []
+#Created an empty list used for the plot then inserted the position and points for the plot
     for team in Bundesliga:
         try:
             print("{:<9} {:<20} {:<8} {:<8}".format(team.position, team.name, team.points, team.record))
@@ -63,6 +65,7 @@ if user == "Bundesliga":
 
     user = input("If you'd like to learn more about a team, just type in a name from the list above"
                  " or type exit to exit the program: ")
+#Checks user input to make sure it matches a team from the printed league, then prints that team's coach and players
     while user != "exit":
         teamFound = False
         for team in Bundesliga:
@@ -77,6 +80,7 @@ if user == "Bundesliga":
         if teamFound == False:
             user = input("That wasn't a name you could pick! Please try again: ")
 
+#ALL CODE BELOW IS THE SAME AS ABOVE BUT WITH DIFFERENT TEAMS
 if user == "Premier League":
     from sportsreference.fb.team import Team
 
