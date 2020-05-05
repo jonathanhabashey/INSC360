@@ -7,11 +7,11 @@ logging.basicConfig(
     filename='Final-log' + '.log',
     format='%(asctime)s %(levelname)-8s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.INFO)
 
-
 user = input("Please select Premier League or Bundeliga: ")
 
 if user == "Bundesliga":
     from sportsreference.fb.team import Team
+
     Dortmund = Team('add600ae')
     BMunich = Team('9133b975')
     Leipzig = Team('acbb6a5b')
@@ -31,7 +31,7 @@ if user == "Bundesliga":
     Paderborn = Team('d9f93f02')
     HBerlin = Team('2818f8bc')
 
-    Bundesliga = [Dortmund, BMunich,Leipzig, Monchengladbach, Leverkusen, Schalke,
+    Bundesliga = [Dortmund, BMunich, Leipzig, Monchengladbach, Leverkusen, Schalke,
                   Wolfsburg, Freiburg, Hoffenheim, Koln, UnionBerlin, Frankfurt,
                   Augsburg, Mainz, Dusseldorf, Bremen, Paderborn, HBerlin]
 
@@ -44,16 +44,17 @@ if user == "Bundesliga":
             logging.info("{}'s data was successfully retrieved".format(team.name))
     Bundesliga.sort(key=lambda team: team.position)
     print("Here are today's Bundesliga standings: ")
-    print("{:<9} {:<20} {:<8} {:<8}".format("Position", "Name",  "Points",  "W-L-D"))
+    print("{:<9} {:<20} {:<8} {:<8}".format("Position", "Name", "Points", "W-L-D"))
     plotList = []
     for team in Bundesliga:
         try:
             print("{:<9} {:<20} {:<8} {:<8}".format(team.position, team.name, team.points, team.record))
             plotList.insert(team.position, team.points)
-            pyplot.title("Position vs Points")
+            pyplot.title("Bundesliga Position vs Points")
             pyplot.xlabel("Position")
             pyplot.ylabel("Points")
             pyplot.plot(plotList)
+            pyplot.savefig(fname="BundesligaPlot.png", format="png")
             pyplot.show()
         except:
             print("Plot could not be printed!")
@@ -72,13 +73,13 @@ if user == "Bundesliga":
                 for player in team.roster:
                     print(player.name)
                 user = input("If you'd like to learn about another team, type in their name"
-                          " if not, type exit: ")
+                             " if not, type exit: ")
         if teamFound == False:
-            user = input("That wasn't an option you could pick! Please try again: ")
-
+            user = input("That wasn't a name you could pick! Please try again: ")
 
 if user == "Premier League":
     from sportsreference.fb.team import Team
+
     Liverpool = Team('e87167c6')
     ManCity = Team('9ce68f8a')
     Leicester = Team('a2d435b3')
@@ -101,9 +102,9 @@ if user == "Premier League":
     Norwich = Team('1c781004')
 
     Prem = [Liverpool, ManCity, Leicester, Chelsea, ManUtd, Wolverhampton,
-                  Sheffield, Tottenham, Arsenal, Burnley, CrystalPalace, Everton,
-                  Newcastle, Southampton, Brighton, WestHam, Watford, Bournemouth,
-                  AstonVilla, Norwich]
+            Sheffield, Tottenham, Arsenal, Burnley, CrystalPalace, Everton,
+            Newcastle, Southampton, Brighton, WestHam, Watford, Bournemouth,
+            AstonVilla, Norwich]
 
     for team in Prem:
         if team.position == None:
@@ -119,10 +120,11 @@ if user == "Premier League":
         try:
             print("{:<9} {:<28} {:<8} {:<8}".format(team.position, team.name, team.points, team.record))
             plotList.insert(team.position, team.points)
-            pyplot.title("Position vs Points")
+            pyplot.title("Premier League Position vs Points")
             pyplot.xlabel("Position")
             pyplot.ylabel("Points")
             pyplot.plot(plotList)
+            pyplot.savefig(fname="PremPlot.png", format="png")
             pyplot.show()
         except:
             print("Plot could not be printed!")
@@ -143,4 +145,4 @@ if user == "Premier League":
                 user = input("If you'd like to learn about another team, type in their name"
                              " if not, type exit: ")
         if teamFound == False:
-            user = input("That wasn't an option you could pick! Please try again: ")
+            user = input("That wasn't a name you could pick! Please try again: ")
